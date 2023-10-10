@@ -23,7 +23,8 @@ public class GenerateEnemis : MonoBehaviour
             float randX = Random.Range(MinX.position.x, MaxX.position.x);
             float randZ = Random.Range(MinZ.position.z, MaxZ.position.z);
             float randScale = Random.Range(1, 5);
-            Vector3 pos=new Vector3(randX,randScale,randZ);
+            float randY = 0f;
+            Vector3 pos = new Vector3(randX, randScale, randZ);
             Vector3 scale = new Vector3( randScale, randScale, randScale);
             GameObject newEnemy= Instantiate(enemyPrefs,pos, Quaternion.identity );
             newEnemy.transform.localScale = scale;

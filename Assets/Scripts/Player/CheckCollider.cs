@@ -14,14 +14,10 @@ public class CheckCollider : MonoBehaviour
         {
             GameManager.Instance.ShowWinUI();
         }
-       
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Enemy"))
+        else if (other.CompareTag("Enemy"))
         {
             GameManager.Instance.Lose();
-            Debug.Log("Triggered Enemy");
         }
+
     }
 }

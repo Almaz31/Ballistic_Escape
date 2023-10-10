@@ -10,7 +10,7 @@ public class Destroying : MonoBehaviour
     {
         if (startExplose)
         {
-            Vector3 step = new(0.1f, 0.1f, 0.1f);
+            Vector3 step = new(0.01f, 0.01f, 0.01f);
             transform.localScale +=step;
         }
     }
@@ -26,13 +26,6 @@ public class Destroying : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
 
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("DestroySphera"))
-        {
-            StartDestroying();
-        }
     }
     
 }

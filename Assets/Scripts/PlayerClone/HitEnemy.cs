@@ -5,22 +5,35 @@ using UnityEngine;
 public class HitEnemy : MonoBehaviour
 {
     [SerializeField] private GameObject radiusObject;
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            Hit();
-            CheckRadius(collision.transform.position);
+            CheckRadius(other.transform.position);
             Debug.Log("Hit Enemy");
         }
     }
-    private void Hit()
-    {
-        Destroy(gameObject);
-    }
     private void CheckRadius(Vector3 pos)
     {
-        GameObject sphera=Instantiate(radiusObject, pos, Quaternion.identity);
-        sphera.transform.localScale=this.transform.localScale;
+        GameObject explosionZone = Instantiate(radiusObject, pos, Quaternion.identity);
+        explosionZone.transform.localScale=this.transform.localScale*2;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        // Переберіть всіх ворогів і викличте функцію вибуху для кожного з них, які потрапили в зону
+        foreach (GameObject e in enemies)
+        {
+            // Перевірте, чи ворог знаходиться в радіусі вибуху
+            float distance = Vector3.Distance(explosionZone.transform.position, e.transform.position);
+            if (distance < explosionZone.transform.localScale.x)
+            {
+                e.GetComponent<Destroying>().StartDestroying();
+            }
+        }
+
+        // Видаліть пулю
+        Destroy(gameObject);
     }
 }
+

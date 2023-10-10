@@ -8,7 +8,7 @@ public class Creating : MonoBehaviour
 {
 
     [SerializeField]private float scaleFactor = 1.0f; // Початковий масштаб гравця
-    [SerializeField] private float speed;
+    [SerializeField] private float speed=10f;
     private Camera mainCamera;
     private Rigidbody rigidbody;
     private bool isMoving = false;
@@ -21,14 +21,22 @@ public class Creating : MonoBehaviour
 
         
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (isMoving)
         {
             rigidbody.velocity = direction.normalized * speed;
+
+            // Обмежте позицію об'єкта по осі Y, щоб не літав вище
+            float newY = Mathf.Clamp(transform.position.y, scaleFactor, Mathf.Infinity);
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
         }
         else
         {
+            // Обмежте позицію об'єкта по осі Y, навіть коли не рухається
+            float newY = Mathf.Clamp(transform.position.y, scaleFactor, Mathf.Infinity);
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+
             rigidbody.velocity = new Vector3(0, 0, transform.position.z).normalized * speed / 2;
         }
     }
