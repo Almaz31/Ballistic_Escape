@@ -15,7 +15,5 @@ public class LifeBarUI : MonoBehaviour
         float lifeBarValue = (layerHeight - 1f) / 9f*100f;
 
         lifeBarSlider.value = lifeBarValue;
-        Debug.Log("LifeBar "+lifeBarValue);
-        Debug.Log("Scale " + layerHeight);
     }
 }

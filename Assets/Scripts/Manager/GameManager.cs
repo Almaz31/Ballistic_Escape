@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get;private set; }
-    [SerializeField] private GameObject LoseUI;
-    [SerializeField] private GameObject WinUI;
+    [SerializeField] private GameObject LoseUIObject;
+    [SerializeField] private GameObject WinUIObject;
     [SerializeField] private WinAnimation winAnim;
     private void Start()
     {
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     }
     public void Lose()
     {
-        LoseUI.SetActive(true);
+        LoseUIObject.SetActive(true);
     }
     public void Win()
     {
@@ -40,6 +40,6 @@ public class GameManager : MonoBehaviour
     }
     public void ShowWinUI()
     {
-        WinUI.SetActive(true);
+        WinUIObject.SetActive(true);
     }
 }

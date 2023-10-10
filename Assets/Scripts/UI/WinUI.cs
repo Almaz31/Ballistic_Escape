@@ -10,7 +10,6 @@ public class WinUI : MonoBehaviour
     [SerializeField] private Button nextLevelButton;
     void Start()
     {
-        gameObject.SetActive(false);
         homeButton.onClick.AddListener(() =>
         {
             GameManager.Instance.Home();

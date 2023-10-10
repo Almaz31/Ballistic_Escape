@@ -9,7 +9,6 @@ public class LoseUI : MonoBehaviour
     [SerializeField] private Button restartButton;
     void Start()
     {
-        gameObject.SetActive(false);
         homeButton.onClick.AddListener(() =>
         {
             GameManager.Instance.Home();
