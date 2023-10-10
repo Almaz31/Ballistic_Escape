@@ -11,11 +11,19 @@ public class Shooting : MonoBehaviour
     private bool isScaling = false;
     [SerializeField] private float scaleFactor = 10f;
     private float touchTime;
+    private bool isLosing=false;
 
     void Update()
     {
+        
         if (isScaling)
         {
+            if (transform.localScale.x < 1)
+            {
+                GameManager.Instance.Lose();
+                isLosing = true;
+                
+            }
             ScalePlayer();
             if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
             {
@@ -30,19 +38,18 @@ public class Shooting : MonoBehaviour
         }
         else
         {
+            if (isLosing) return;
             if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 CreateLayer();
                 isScaling = true;
                 touchTime= 0;
-                Debug.Log(scaleFactor);
             }
         }
     }
 
     private void CreateLayer()
     {
-        // Створюємо новий шар перед гравцем і встановлюємо його позицію
         copyLayer = Instantiate(playerLayerPrefab, spawnPos.position, Quaternion.identity);
     }
 
