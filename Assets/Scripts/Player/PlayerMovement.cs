@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f; // Ўвидк≥сть кот≥нн€
+    private Rigidbody rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
-        // –ухаЇмо об'Їкт вперед по ос≥ Z
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+        rb.velocity = new Vector3(0, 0,transform.position.z).normalized * speed;
     }
 }
