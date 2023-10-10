@@ -36,8 +36,11 @@ public class Creating : MonoBehaviour
 
     public void Scale(float touchDuration)
     {
-        scaleFactor += touchDuration / 100000;
-        transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        if (scaleFactor < 8)
+        {
+            scaleFactor += touchDuration / 10000;
+            transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        }
     }
 
     public void SetDirectionAndPosition()

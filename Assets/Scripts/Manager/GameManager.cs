@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(2).ToString());
     }
-    public void  ShowWinUI()
+    public void ShowWinUI()
     {
         WinUI.SetActive(true);
     }

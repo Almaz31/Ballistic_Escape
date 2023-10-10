@@ -9,11 +9,19 @@ public class CheckCollider : MonoBehaviour
         if (other.CompareTag("WinPoint"))
         {
             GameManager.Instance.Win();
-            Debug.Log("WinPoint");
         }
         else if (other.CompareTag("EndPoint"))
         {
             GameManager.Instance.ShowWinUI();
+        }
+       
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            GameManager.Instance.Lose();
+            Debug.Log("Triggered Enemy");
         }
     }
 }
