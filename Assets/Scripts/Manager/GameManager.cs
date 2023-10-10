@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get;private set; }
     [SerializeField] private GameObject LoseUI;
     [SerializeField] private GameObject WinUI;
-    private int activeScene;
+    [SerializeField] private WinAnimation winAnim;
     private void Start()
     {
         if(Instance == null)Instance = this;
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
     public void Win()
     {
-        WinUI.SetActive(true);
+        winAnim.StartAnimation();
     }
     public void Home()
     {
@@ -32,5 +32,9 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(2).ToString());
+    }
+    public void  ShowWinUI()
+    {
+        WinUI.SetActive(true);
     }
 }
