@@ -9,13 +9,13 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform spawnPos;
 
     private bool isScaling = false;
-    [SerializeField] private float scaleFactor = 10f;
+    public float scaleFactor = 10f;
+    [SerializeField] private float offsetZ=2f;
     private float touchTime;
     private bool isLosing=false;
 
     void Update()
     {
-        
         if (isScaling)
         {
             if (transform.localScale.x < 1)
@@ -50,7 +50,9 @@ public class Shooting : MonoBehaviour
 
     private void CreateLayer()
     {
-        copyLayer = Instantiate(playerLayerPrefab, spawnPos.position, Quaternion.identity);
+        Vector3 offset = new Vector3(0, 0, offsetZ);
+        Vector3 scale = new Vector3(0, 0, transform.localScale.z);
+        copyLayer = Instantiate(playerLayerPrefab, spawnPos.position + scale , Quaternion.identity);
     }
 
     private void ScalePlayer()

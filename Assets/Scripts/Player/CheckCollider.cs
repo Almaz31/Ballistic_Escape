@@ -13,10 +13,12 @@ public class CheckCollider : MonoBehaviour
         else if (other.CompareTag("EndPoint"))
         {
             GameManager.Instance.ShowWinUI();
+            GetComponent<PlayerMovement>().StopPlayer();
         }
         else if (other.CompareTag("Enemy"))
         {
             GameManager.Instance.Lose();
+            GetComponent<PlayerMovement>().StopPlayer();
         }
 
     }

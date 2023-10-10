@@ -27,11 +27,16 @@ public class GameManager : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(2).ToString());
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
     }
     public void ShowWinUI()
     {
