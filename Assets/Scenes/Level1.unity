@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLayer: {fileID: 1673845678}
+  initialWidth: 4
 --- !u!65 &502070343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3265,6 +3266,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5673354434783497665, guid: 85071f7c2d136194ab93db8c94e8b1fe,
         type: 3}
+    - target: {fileID: 3956610328190938630, guid: 8c92811f9ff05a64e8674648f082cea1,
+        type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6681555541786470483, guid: 8c92811f9ff05a64e8674648f082cea1,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -3287,6 +3293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Win Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 779726620762349883, guid: 090b611a853b04d47b808586a003df24,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 3838355479958578178, guid: 090b611a853b04d47b808586a003df24,
         type: 3}
